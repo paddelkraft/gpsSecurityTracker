@@ -1,5 +1,13 @@
 Meteor.startup(function () {
 
+// seed position
+if(Participants.find().count === 0)
+{
+  Participants.insert({
+    name : 'Mr Andersson'
+  });
+}
+
   // seed data
   //Todos.remove({});
 
