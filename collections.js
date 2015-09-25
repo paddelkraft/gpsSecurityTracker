@@ -1,0 +1,1 @@
+// Coordinates = new Meteor.Collection('coordinates');
