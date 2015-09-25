@@ -47,7 +47,7 @@ Template.map.onCreated(function() {
 
 
 
-ParticipantPositions.find().observe({  
+Participants.find().observe({  
   added: function(document) {
 	
 
@@ -56,10 +56,11 @@ ParticipantPositions.find().observe({
   	console.log("Added new marker");
   	console.log(document);
     // Create a marker for this document
+
     var marker = new google.maps.Marker({
       draggable: false,
       animation: google.maps.Animation.DROP,
-      position: new google.maps.LatLng(document.latitude, document.longitude),
+      position: new google.maps.LatLng(document.lastPosition.latitude, document.lastPosition.longitude),
       map: map.instance,
       label: "N",
       //icon: image,
@@ -94,7 +95,7 @@ else{
   changed: function(newDocument, oldDocument) {
   	console.log("changed marker");
   	console.log(newDocuments);
-    markers[newDocument._id].setPosition({ lat: newDocument.latitude, lng: newDocument.longitude });
+    markers[newDocument._id].setPosition({ lat: newDocument.lastPosition.latitude, lng: newDocument.lastPosition.longitude });
   },
   removed: function(oldDocument) {
   	console.log("deleted marker");
