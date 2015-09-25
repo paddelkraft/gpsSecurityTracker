@@ -24,13 +24,27 @@ function getLocation() {
 
 function showPosition(position) {
     if(Session.get('participant')){
-        ParticipantPositions.insert({
-            participantId : Session.get('participant'),
+        
+        var participantId = Session.get('participant');
+        
+        var position = {
+            participantId : participantId,
             latitude : position.coords.latitude,
             longitude : position.coords.longitude, 
             timeStamp : new Date().getTime(),   
             alarm: false
+        };
+        ParticipantPositions.insert(position);
+        
+        var participant = Participants.find(participantId);
+        participant.lastPosition = position;
+
+        Participants.update(participantId, 
+        {
+            $set : 
+            { 
+                lastPosition: position
+            }
         });
     }
-        
-    }
+}
