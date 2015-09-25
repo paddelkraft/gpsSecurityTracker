@@ -8,7 +8,7 @@ Template.main.events({
         Participants.insert({ _id : id.toString(), name : newParticipantName }, function(err, record){
             Session.set("participant", record);
         });
-        // Todo: route to map
+
         console.log("ID: " + id + " | Name: " + newParticipantName);
 
         Router.go('/map');
