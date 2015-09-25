@@ -1,9 +1,23 @@
 
-
 <template name="viewparticipants">
-       {{#each participants}}
-          <div class="category">
-            {{name}}
-         </div>
-       {{/each}}
-</template>
+  <table class="category">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Latitude</td>
+        <td>Longtitude</td>
+        <td>Timestamp</td>
+        <td>Alarm</td>
+      </tr>
+    </thead>
+    {{#each participants}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{latitude}}</td>
+      <td>{{longitude}}</td>
+      <td>    {{timeStamp}}</td>
+      <td>{{alarm}}</td>
+    </tr>
+    {{/each}}
+    </table>
+ </template>
