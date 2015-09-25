@@ -1,15 +1,18 @@
 Meteor.startup(function () {
-    Participants.insert({
-      name : 'Mr Andersson'
-    });
-    
-    ParticipantPositions.insert({
+    var samplePosition = {
       participantId: "1",
       latitude : "65",
       longitude : "24",
       timeStamp : "1443184906",
       alarm : false
+    };
+    
+    Participants.insert({
+      name : 'Mr Andersson',
+      lastPosition : samplePosition
     });
+    
+    ParticipantPositions.insert(samplePosition);
 
     // Following code is just for demo purpose
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
