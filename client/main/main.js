@@ -14,6 +14,7 @@ setInterval(function(){
     if(Session.get('participant')){
         SetLocation();
     }
+    
 }, 10 * 1000)
 
 
@@ -27,12 +28,26 @@ SetLocation = function () {
 
 function setPosition(position) {
     if(Session.get('participant')){
-        ParticipantPositions.insert({
-            participantId : Session.get('participant'),
+        var participantId = Session.get('participant');
+        
+        var position = {
+            participantId : participantId,
             latitude : position.coords.latitude,
             longitude : position.coords.longitude, 
             timeStamp : new Date().getTime(),   
             alarm: Session.get('isAlarmed')
+        };
+        ParticipantPositions.insert(position);
+        
+        var participant = Participants.find(participantId);
+        participant.lastPosition = position;
+
+        Participants.update(participantId, 
+        {
+            $set : 
+            { 
+                lastPosition: position
+            }
         });
     }
         

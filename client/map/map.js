@@ -105,7 +105,7 @@ else{
   },
   changed: function(newDocument, oldDocument) {
   	console.log("changed marker");
-  	console.log(newDocuments);
+  	console.log(newDocument);
     markers[newDocument._id].setPosition({ lat: newDocument.lastPosition.latitude, lng: newDocument.lastPosition.longitude });
   },
   removed: function(oldDocument) {
