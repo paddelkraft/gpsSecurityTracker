@@ -1,4 +1,4 @@
-Template.home.events({
+Template.main.events({
     'click #add' : function(){
         var d = new Date();
         var id = d.getTime();
@@ -10,5 +10,7 @@ Template.home.events({
         });
         // Todo: route to map
         console.log("ID: " + id + " | Name: " + newParticipantName);
+
+        Router.go('/map');
     }
 });
