@@ -57,12 +57,23 @@ Participants.find().observe({
   	console.log(document);
     // Create a marker for this document
 
+    var labelChar = "";
+
+    if(document.status == "alarm"){
+		labelChar = "A";
+    }
+   else if(document.status == "attention"){
+		labelChar = "P";
+    }
+    else{
+		labelChar = "N";
+    }
     var marker = new google.maps.Marker({
       draggable: false,
       animation: google.maps.Animation.DROP,
       position: new google.maps.LatLng(document.lastPosition.latitude, document.lastPosition.longitude),
       map: map.instance,
-      label: "N",
+      label: labelChar,
       //icon: image,
       // We store the document _id on the marker in order 
       // to update the document within the 'dragend' event below.
