@@ -1,5 +1,6 @@
 Router.route('/');
 Router.route('/home');
+Router.route('/alarm');
 Router.route('/viewparticipants');
 Router.route('/map');
 
