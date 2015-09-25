@@ -1,5 +1,9 @@
 var ParticipantPositionId;
 
+if(!Session.get('isAlarmed')){
+    Session.set('isAlarmed', false)
+}
+
 Template.main.helpers ({
     pos: function () {
         return ParticipantPositions.find();
@@ -32,7 +36,7 @@ function showPosition(position) {
             latitude : position.coords.latitude,
             longitude : position.coords.longitude, 
             timeStamp : new Date().getTime(),   
-            alarm: false
+		 alarm: Sesssion.get('isAlarmed')
         };
         ParticipantPositions.insert(position);
         
