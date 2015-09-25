@@ -1,3 +1,9 @@
 .alarmed{
     background-color: #FF0000;
 }
+
+.btn{
+    width: 600px;
+    height: 600px;
+    font-size: 100px;
+}
