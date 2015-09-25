@@ -1,2 +1,2 @@
 Participants = new Meteor.Collection('participants');
-ParticipantPositions = new Meteor.Collection('participantPositions')
+ParticipantPositions = new Meteor.Collection('participantPositions');
