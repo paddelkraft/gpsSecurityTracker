@@ -1,17 +1,18 @@
 Meteor.startup(function () {
-
-    Participants.insert({
-      name : 'Mr Andersson'
-    });
-    
-    ParticipantPositions.insert({
+    var samplePosition = {
       participantId: "1",
       latitude : "65",
       longitude : "24",
       timeStamp : "1443184906",
       alarm : false
+    };
+    
+    Participants.insert({
+      name : 'Mr Andersson',
+      lastPosition : samplePosition
     });
-
+    
+    ParticipantPositions.insert(samplePosition);
 
     // Following code is just for demo purpose
     function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -34,6 +35,4 @@ Meteor.startup(function () {
 
     var testDistance = getDistanceFromLatLonInKm(57.70887,11.97456,57.7004325,11.95170879);
     console.log("Distance from Centralen to Järntorget: " + testDistance + " km");
-
-
 });

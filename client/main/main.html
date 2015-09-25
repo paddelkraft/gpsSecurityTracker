@@ -1,9 +1,12 @@
 <template name="main">
     {{> menu }}
     <p style="padding: 2%">
-        {{> yield}}
+        {{> yield }}
     </p>
-
+    
+    {{ #each pos }}
+        Entry:  {{ timeStamp }} ParticipantId: {{participantId}} Latitude: {{ latitude }} Longitude : {{ longitude }} <br/>
+    {{ /each}}
     <hr />
     <p>Copyright &copy; Softhouse Göteborg, Alicante 2015</p>
 </template>
