@@ -3,20 +3,20 @@
   <table class="category">
     <thead>
       <tr>
-        <td>Name</td>
-        <td>Latitude</td>
-        <td>Longtitude</td>
-        <td>Timestamp</td>
-        <td>Alarm</td>
+        <th>Status</th>
+        <th>Name</th>
+        <th>Latitude</th>
+        <th>Longtitude</th>
+        <th>Timestamp</th>
       </tr>
     </thead>
     {{#each participants}}
     <tr>
+      <td>{{status}}</td>
       <td>{{name}}</td>
-      <td>{{latitude}}</td>
-      <td>{{longitude}}</td>
-      <td>    {{timeStamp}}</td>
-      <td>{{alarm}}</td>
+      <td>{{lastPosition.latitude}}</td>
+      <td>{{lastPosition.longitude}}</td>
+      <td>{{lastPosition.niceDateTime}}</td>
     </tr>
     {{/each}}
     </table>

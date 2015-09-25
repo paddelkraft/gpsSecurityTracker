@@ -2,21 +2,12 @@
 
 Template.viewparticipants.helpers({
   participants: function () {
-    var participants = Participants.find({}).fetch();
-    for(var i=0; i< participants.length; i++){
-      var par = participants[i];
-      
-      var participantsPos = ParticipantPositions.find({ participantId: par._id }).fetch()[0];
-     
-      if(participantsPos === undefined)
-        continue;
-      
-      par.latitude = participantsPos.latitude;
-      par.longitude = participantsPos.longitude;
-      par.alarm = participantsPos.alarm;
-      par.timeStamp = participantsPos.timeStamp;
-    }
-    
+    var participants = Participants.find({}, { sort: { status: 1 } }).fetch();
+
+    participants.forEach(function(item){
+      item.niceDateTime = new Date(item.timeStamp).toString('HH:mm:ss');
+    });
+
     return participants;
   }
 });
