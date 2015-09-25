@@ -1,4 +1,46 @@
-/*var markers = {};
+/*
+
+*/
+
+
+Template.map.helpers({
+  exampleMapOptions: function() {
+    // Make sure the maps API has loaded
+    if (GoogleMaps.loaded()) {
+      // Map initialization options
+      return {
+        center: new google.maps.LatLng(38.3409791, -0.4782319),
+        zoom: 16
+      };
+    }
+  }
+
+
+});
+
+Template.map.onCreated(function() {
+  // We can use the `ready` callback to interact with the map API once the map is ready.
+  GoogleMaps.ready('exampleMap', function(map) {
+console.log("Starting");
+    	ParticipantPositions.find().forEach(function(document){
+    		console.log(document);
+    		//console.log("latitude: " + document.latitude);
+    		//console.log("longitude: " + document.longitude);
+
+	    	var marker = new google.maps.Marker({
+	      		draggable: true,
+	      		animation: google.maps.Animation.DROP,
+	      		position: new google.maps.LatLng(document.latitude, document.longitude),
+	      		map: map.instance,
+		      // We store the document _id on the marker in order 
+		      // to update the document within the 'dragend' event below.
+	      		id: document._id
+    		});
+
+    	})
+
+
+var markers = {};
 
 Participants.find().observe({  
   added: function(document) {
@@ -36,47 +78,6 @@ Participants.find().observe({
     delete markers[oldDocument._id];
   }
 });
-
-*/
-
-
-Template.map.helpers({
-  exampleMapOptions: function() {
-    // Make sure the maps API has loaded
-    if (GoogleMaps.loaded()) {
-      // Map initialization options
-      return {
-        center: new google.maps.LatLng(38.3409791, -0.4782319),
-        zoom: 16
-      };
-    }
-  }
-});
-
-Template.map.onCreated(function() {
-  // We can use the `ready` callback to interact with the map API once the map is ready.
-  GoogleMaps.ready('exampleMap', function(map) {
-console.log("Starting");
-    	Participants.find().forEach(function(document){
-    		console.log("In for each");
-	    	var marker = new google.maps.Marker({
-	      		draggable: true,
-	      		animation: google.maps.Animation.DROP,
-	      		position: new google.maps.LatLng(document.latitude, document.longitude),
-	      		map: map.instance,
-		      // We store the document _id on the marker in order 
-		      // to update the document within the 'dragend' event below.
-	      		id: document._id
-    		});
-    	})
-
-
-/*    // Add a marker to the map once it's ready
-    var marker = new google.maps.Marker({
-      position: map.options.center,
-      map: map.instance
-    });
-*/
 
 
   });
