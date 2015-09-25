@@ -5,9 +5,10 @@ Template.home.events({
         console.log(d + " " + id);
 
         var newParticipantName = $('#participantName').val();
-        Participants.insert({ _id : id.toString(), name : newParticipantName });
-        // Session.set("_ID", event.);
-        // . Session.set("hideCompleted", event.target.checked); } })
+        Participants.insert({ _id : id.toString(), name : newParticipantName }, function(err, record){
+            Session.set("participant", record);
+        });
+        // Todo: route to map
         console.log("ID: " + id + " | Name: " + newParticipantName);
     }
 });
