@@ -12,43 +12,28 @@ Template.main.helpers ({
 
 setInterval(function(){
     if(Session.get('participant')){
-        getLocation();
+        SetLocation();
     }
-    
 }, 10 * 1000)
 
 
-function getLocation() {
+SetLocation = function () {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(setPosition);
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
-function showPosition(position) {
+function setPosition(position) {
     if(Session.get('participant')){
-        
-        var participantId = Session.get('participant');
-        
-        var position = {
-            participantId : participantId,
+        ParticipantPositions.insert({
+            participantId : Session.get('participant'),
             latitude : position.coords.latitude,
             longitude : position.coords.longitude, 
             timeStamp : new Date().getTime(),   
-		 alarm: Sesssion.get('isAlarmed')
-        };
-        ParticipantPositions.insert(position);
-        
-        var participant = Participants.find(participantId);
-        participant.lastPosition = position;
-
-        Participants.update(participantId, 
-        {
-            $set : 
-            { 
-                lastPosition: position
-            }
+            alarm: Session.get('isAlarmed')
         });
     }
-}
+        
+    }
