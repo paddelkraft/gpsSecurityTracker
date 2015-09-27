@@ -74,6 +74,7 @@ Participants.find().observe({
       position: new google.maps.LatLng(document.lastPosition.latitude, document.lastPosition.longitude),
       map: map.instance,
       label: labelChar,
+      title: document.name,
       //icon: image,
       // We store the document _id on the marker in order 
       // to update the document within the 'dragend' event below.

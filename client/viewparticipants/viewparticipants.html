@@ -1,23 +1,24 @@
 
 <template name="viewparticipants">
-  <table class="category">
-    <thead>
-      <tr>
-        <th>Status</th>
-        <th>Name</th>
-        <th>Latitude</th>
-        <th>Longtitude</th>
-        <th>Timestamp</th>
-      </tr>
-    </thead>
-    {{#each participants}}
-    <tr>
-      <td>{{status}}</td>
-      <td>{{name}}</td>
-      <td>{{lastPosition.latitude}}</td>
-      <td>{{lastPosition.longitude}}</td>
-      <td>{{lastPosition.niceDateTime}}</td>
-    </tr>
-    {{/each}}
-    </table>
+    <div class="container">
+     <div class="well">
+         <div class="row">
+             <div class="col-sm-2">Status</div>
+             <div class="col-sm-4">Name</div>
+             <div class="col-sm-2">Lat</div>
+             <div class="col-sm-2">long</div>
+         </div>
+         {{#each participants}}
+             <div class="row">
+                 <div class="col-sm-2">{{status}}</div>
+                 <div class="col-sm-4">{{name}}</div>
+                 <div class="col-sm-2">{{lastPosition.latitude}}</div>
+                 <div class="col-sm-2">{{lastPosition.longitude}}</div>
+                 <div class="col-sm-2"> {{lastPosition.niceDateTime}}</div>
+             </div>
+         {{/each}}
+     </div>
+
+    </div>
+
  </template>

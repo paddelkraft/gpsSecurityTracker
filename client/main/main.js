@@ -41,7 +41,11 @@ function setPosition(position) {
         
         var participant = Participants.find(participantId);
         participant.lastPosition = position;
-
+        if(Session.get('isAlarmed')){
+            participant.status = "Alarm";
+        }else{
+           participant.status = "Normal";
+        }
         Participants.update(participantId, 
         {
             $set : 

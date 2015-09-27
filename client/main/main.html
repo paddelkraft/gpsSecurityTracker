@@ -1,12 +1,28 @@
-<template name="main">
+<template name="main" xmlns="http://www.w3.org/1999/html">
     {{> menu }}
+
     <p style="padding: 2%">
         {{> yield }}
     </p>
-    
-    {{ #each pos }}
-        Entry:  {{ timeStamp }} ParticipantId: {{participantId}} Latitude: {{ latitude }} Longitude : {{ longitude }} <br/>
-    {{ /each}}
+    <!--div class="container">
+        <div class="jumbotron"><h3>Deltagare </h3></div>
+        <div class="row">
+            <div class="col-md-2">Timestamp</div>
+            <div class="col-md-4">Bib no </div>
+            <div class="col-md-2">Latitude</div>
+            <div class="col-md-2">Longitude</div>
+        </div>
+
+        {{ #each pos }}
+        <div class="row">
+            <div class="col-md-2">{{ timeStamp }}</div>
+            <div class="col-md-4">{{ participantId }}</div>
+            <div class="col-md-2">{{ latitude }}</div>
+            <div class="col-md-2">{{ longitude }}</div>
+        </div>
+        {{ /each}}
+    </div-->
+
     <hr />
     <p>Copyright &copy; Softhouse Göteborg, Alicante 2015</p>
 </template>
